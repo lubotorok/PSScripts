@@ -9,4 +9,4 @@ param (
 $R = Invoke-RestMethod -uri $uri
 $JSon = ConvertTo-Json -depth 100 $R
 
-Write-Host $JSon
+Write-Output $JSon
