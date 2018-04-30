@@ -40,21 +40,31 @@ Write-Host "-------------------"
 
 $leftNodes = $leftXml.SelectNodes("//*")
 $leftPaths = @()
+$leftCount = $leftNodes.Count
+$i=0
 
 $rightNodes = $rightXml.SelectNodes("//*")
 $rightPaths = @()
+$rightCount = $rightNodes.Count
+$j=0
 
 foreach ($node in $leftnodes){
   $leftPaths += Get-XPath($node)
+  Write-Progress -Activity "Collecting LEFT xpaths" -Status "XPath $i from $leftCount" -PercentComplete (($i/$leftCount) * 100)
+  $i++
 }
 $leftPaths = $leftPaths | Sort-Object 
 
 foreach ($node in $rightNodes){
   $rightPaths += Get-XPath($node)
+  Write-Progress -Activity "Collecting RIGHT xpaths" -Status "XPath $j from $rightCount" -PercentComplete (($j/$rightCount) * 100)
+  $j++
 }
 $rightPaths = $rightPaths | Sort-Object
 
 $docDiffs=Compare-Object $leftPaths $rightPaths
+$docDiffCount = $docDiffs.Count
+$k = 0
 
 $leftVystup = ""
 $rightVystup = ""
@@ -68,6 +78,8 @@ foreach( $diff in $docDiffs){
       $rightVystup = $rightVystup + "   Element: " + $diff.InputObject +" occurs in RIGHT file only `n";
   }
   
+  Write-Progress -Activity "Processing diffs" -Status "Diff $k from $docDiffCount" -PercentComplete (($k/$docDiffCount) * 100)
+  $k++
 }
 
 Write-Host "------ LEFT occurences only --------"
