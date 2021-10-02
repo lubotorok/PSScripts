@@ -5,7 +5,7 @@ Gets the rating tag of the photo and sends it to the output for further processi
 Script is using TagLibSharp.dll in script_libs folder. You have to download it by yourself.
 See readme in the script_libs folder.
 
-# Selecte-Photo
+# Select-Photo
 Selects a subset from files from input or from a given Path filtered by Filter 
 and having rating specified by -RatingFrom and -RatingTo parameters.
 
