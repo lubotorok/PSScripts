@@ -48,7 +48,7 @@ if ($MyInvocation.ExpectingInput){ #we are getting values from pipe
         $Rating = .\Get-PhotoRating $file.FullName
         if ( ($Rating -le $ratingTo) -and ($Rating -ge $ratingFrom)){
             Write-Output $file  
-            Write-Host "---> RATING: " $Rating
+            Write-Host $file " ---> RATING: " $Rating
         }
     }
 }
@@ -62,7 +62,7 @@ else{
         
         if ( ($Rating -le $ratingTo) -and ($Rating -ge $ratingFrom)){
             Write-Output $file  
-            Write-Host "---> RATING: " $Rating
+            Write-Host $file " ---> RATING: " $Rating
         }
     }
 }
