@@ -30,7 +30,8 @@ if (!($PSBoundParameters.ContainsKey('height'))){
 
 if ($MyInvocation.ExpectingInput){
     foreach($file in $input){
-        $img = "<img src=`""+$file.FullName+"`" width=`"$width`" height=`"$height`" /><br/><br/>"
+        $img = "<img src=`""+$file.FullName+"`" width=`"$width`" height=`"$height`" /><br/>"
+	$img = $img + $file.FullName + "<br/><br/>"
         $html = $html + $img
     }
 }
